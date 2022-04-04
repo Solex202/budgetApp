@@ -1,0 +1,64 @@
+.budgetBalance{
+    background-color:  indigo;
+    height: 5%;
+    width: 97%;
+    padding: 2% 1.5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balance{
+    background-color: floralwhite;
+    height: 5vh;
+    color: indigo;
+    border-radius: 5px;
+    /* padding: 1%; */
+    width: 19%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* rgb(116, 8, 218); */
+}
+
+.balance-button{
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.balance-button input{
+    height: 5vh;
+    width: 50%;
+    border-radius: 4px;
+    border: unset;
+    background-color: floralwhite;
+    box-shadow: 24px;
+    padding: 0 10px;
+}
+
+.balance-button input :focus-visible{
+    outline: unset;
+    background-color: white;
+    color: #4b0090;
+}
+
+.balance-button button{
+    outline: unset;
+    height: 5.5vh;
+    background-color: yellow;
+    color: indigo;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    padding: 1.5%;
+    cursor: pointer;
+
+}

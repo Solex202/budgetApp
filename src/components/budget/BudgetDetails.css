@@ -1,0 +1,49 @@
+.budget-details-container table{
+    /* min-height: 50vh; */
+}
+
+table{
+    border: 2px solid black;
+    border-spacing: 0.5rem;
+    border-collapse: collapse;
+    width: 100%;
+    /* max-height: 70%; */
+
+}
+
+td,th{
+    border: 1px solid black;
+    padding: 0.5rem;
+    text-align: left;
+    width: 8rem;
+    height: 4rem;
+}
+
+.budget-details-container h1{
+    text-align: center;
+    margin-top: 39px;
+    margin-bottom: 20px;
+}
+
+.budget-details-container{
+    color: indigo;
+    /* width: 90px; */
+    /* height: 60px; */
+    /* background-color: wheat; */
+
+}
+
+th{
+    background-color: yellow;
+    color: indigo;
+}
+
+td{
+    color: indigo;
+}
+
+.data-row{
+    text-align: center;
+    height: 1vh;
+    background-color: white;
+}
