@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BudgetBalance.css"
+import Converter from "./Converter";
 
 
 const BudgetBalance = (props) => {
@@ -9,6 +10,19 @@ const BudgetBalance = (props) => {
         // console.log(e);
         setInput(e.target.value)
 }
+
+
+
+
+ // https://v6.exchangerate-api.com/v6/9177ccc3a4d4e7d11c3c3feb/latest/USD
+
+// useEffect(() => {
+//     console.log("i just mounted @ budget balance");
+// return () => {
+//     console.log("i just unmounted");
+// }
+// }, [props.balance])
+
     return ( 
 
         <div className="budgetBalance">
@@ -17,6 +31,7 @@ const BudgetBalance = (props) => {
             </div>
             <div className="balance-button">
                 <input  onChange={handleInput} />
+                <Converter balance = {props.balance} setBalance = {props.setBalance}/>
                 <button  onClick={() => props.setBalance(input)}>Update balance</button>
             </div>
             <div>

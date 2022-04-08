@@ -3,18 +3,14 @@ import { toDatetimeLocal } from "../../util";
 import './BudgetDetails.css'
 
 const BudgetDetails = (props) => {
-    // let {budget, setBudget} = props
-
-       
-//   const  deleteRow = (e)=> {
-//       let td = e.target.parentNode;
-//       let tr = td.parentNode;
-//       tr.parentNode.removeChild(tr)
+        // let {budget, setBudget} = props
+        //   const  deleteRow = (e)=> {
+        //       let td = e.target.parentNode;
+        //       let tr = td.parentNode;
+        //       tr.parentNode.removeChild(tr)
         // let row = btn.parentNode.parentNode;
         // row.parentNode.removeChild(row);
   
-           
-    
     let {budget, setBudget, balance,setBalance,total,setTotal} = props
 
     const deleteEntry = (objectId,amount) => {
@@ -51,7 +47,7 @@ const BudgetDetails = (props) => {
                         <td>{data.budgetDescription}</td>
                         <td><button onClick={() =>deleteEntry(index,data.budgetAmount)}  style={{backgroundColor: 'indigo',color:'white', padding:'2px 10px', outline:'unset'}}>
                                 Delete 
-                                </button>
+                            </button>
                         </td>
                     </tr>)
                 }

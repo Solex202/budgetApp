@@ -1,23 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import Logo from "./components/Logo";
+import "./App.css"
+import Links from "./components/Links";
+import AuthButton from "./components/AuthButton";
+import Features from "./components/Features";
+import FloatBox from "./components/FloatBox";
+import ToggleButton from "./components/ToggleButton";
+
 
 function App() {
+
+  const links = [
+    {
+      buttonName: 'Reviews',
+    },
+    { buttonName: 'Tips',
+    },
+    {  buttonName: 'Alerts',
+    },
+    {  buttonName: 'Blogs'
+    }
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="hotel-app-container">
+      <div className="header-container">
+        <div className="header"> 
+          <Logo/>
+          <div style={{display: 'flex', justifyContent: 'space-between', width: '20%', color: 'white'}}>
+            {links.map((link) => <p>{link.buttonName}</p>)}
+          </div>
+          <AuthButton/>
+        </div>
+        <div className="header-text">
+          <h1>Discover a Beautiful <br/> Place With Us</h1>
+          <p>Would you explore nature paradise in the world ,let's find the <br/> best destination in the world with us</p>
+        </div>
+      </div>
+      <div className="toggle-search">
+        <ToggleButton  image=""  btnText="Flight"/>
+        <ToggleButton  image=""  btnText="Hotel"/>
+      </div>
+      <div className="box">
+        <FloatBox/>
+      </div>
+      <div className="special-container">
+        <div className="container-text">
+          <p>SPECIAL FEATURE</p>
+          <h2>See Some Benefits Joining Us</h2>
+        </div>
+        <div>
+        <Features />
+        </div>
+      </div>
     </div>
   );
 }
