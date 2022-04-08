@@ -1,0 +1,11 @@
+.dropdown{
+    height: 2.5rem;
+    width: 4rem;
+    border: unset;
+    border-radius: 3px;
+    padding: 4px;
+    color: #4b0090;
+    font-weight: bold;
+    /* display: none; */
+
+}
