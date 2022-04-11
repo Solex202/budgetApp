@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import BudgetLoginPage from './components/budget/BudgetLoginPage';
 import './index.css';
 import MyApp from './MyApp';
 import NewApp from './NewApp';
@@ -11,6 +12,7 @@ ReactDOM.render(
     {/* <App/> */}
     {/* <MyApp/> */}
     <NewApp/>
+    {/* <NewApp/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

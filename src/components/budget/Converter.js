@@ -1,12 +1,12 @@
 import axios from 'axios'
-import React ,{useState, useEffect}from 'react'
+import React ,{useState, useEffect} from 'react'
 import './converter.css'
 
 function Converter(props) {
 
 const [exchangeRate, setExchangeRate] = useState([])
-    const {balance , setBalance} = props
-    const [option , setOption] = useState("")
+    const {balance, setBalance} = props
+    const [option, setOption] = useState("")
     const [rate, setRate] = useState({})
 
     const handleOptionChange = (e) =>{
@@ -16,6 +16,8 @@ const [exchangeRate, setExchangeRate] = useState([])
     useEffect(() => {
         axios.get('https://v6.exchangerate-api.com/v6/9177ccc3a4d4e7d11c3c3feb/latest/NGN')
         .then((response) => {
+            // console.log(response);
+            console.log(response.data.conversion_rates);
             // let keys = Object.keys(response.data.conversion_rates)
                  setExchangeRate(Object.keys(response.data.conversion_rates))
                  setRate(response.data.conversion_rates)
@@ -41,7 +43,7 @@ const [exchangeRate, setExchangeRate] = useState([])
 return (
     <div>
         <select className='dropdown' onChange={handleOptionChange}>
-           { exchangeRate.map((val, index)=> 
+           {exchangeRate.map((val, index)=> 
                <option key={index}>{val}</option>
            )}
         </select>
