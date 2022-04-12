@@ -12,6 +12,7 @@ ReactDOM.render(
     {/* <App/> */}
     {/* <MyApp/> */}
     <NewApp/>
+    
     {/* <NewApp/> */}
   </React.StrictMode>,
   document.getElementById('root')

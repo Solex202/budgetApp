@@ -21,7 +21,7 @@ function BudgetLoginPage({submitForm}) {
   const handleSubmit = (e) =>{
     console.log(loginDetails);
     e.preventDefault()
-    if(loginDetails.name === 'seniordev' && loginDetails.password === 'lotachi123'){
+    if(loginDetails.username === 'seniordev' && loginDetails.password === 'lotachi123'){
       submitForm()
       // console.log(props)
     }
@@ -38,8 +38,8 @@ function BudgetLoginPage({submitForm}) {
                 <h3>LOGIN</h3>
               
                   {/* <label htmlFor='name: '>Name:</label> */}
-                  <input type='text' name='' id='' placeholder=" Please enter username" onChange={handleChange}/>
-                  <input type='text' name='' id='' placeholder=' Please enter password' onChange={handleChange}/>
+                  <input type='text' name='username' id='' placeholder=" Please enter username" onChange={handleChange}/>
+                  <input type='text' name='password' id='' placeholder=' Please enter password' onChange={handleChange}/>
                   <button onClick={handleSubmit}>Login</button>
   
             </div>
