@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import Login from './components/authentication/Login'
+import LoginB from './components/authentication/LoginB'
 import Register from './components/authentication/Register'
 import './authentication.css'
+// import Budget from './Budget'
 
-const Authentication = () => {
+const Authentication = ({setIsSubmited}) => {
 
     const [auth, setAuth] = useState("register")
     const [alert, setAlert] = useState({ishow:false, status:"", message:""})
@@ -29,7 +30,7 @@ const Authentication = () => {
                 <button onClick={switchHandler} > {auth  === "login"? "Login": "Register"}</button>
             </div>
             {/* <button onClick={switchHandler} > {auth  === "login"? "Login": "Register"}</button> */}
-            {auth === "login"? <Login setAlert={setAlert} />:<Register setAlert={setAlert}/>}
+            {auth === "login"? <LoginB setAlert={setAlert} setIsSubmited={setIsSubmited} />:<Register setAlert={setAlert}/>}
         </div>
     </div>
   )

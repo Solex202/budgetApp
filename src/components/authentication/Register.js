@@ -13,8 +13,7 @@ const Register = ({setAlert}) => {
         //check if all fields have values
         let isFieldIncomplete =  Object.keys(userDetails).some((detail) => detail === " ")
         if(isFieldIncomplete){
-            setAlert({ishow:true, status:"error", message: "field incomplete"})
-            // console.log("field incomplete");
+            setAlert({ishow:true, status:"error", message: "field incomplete"})``
             return
         }
         //validate email is email
@@ -22,7 +21,6 @@ const Register = ({setAlert}) => {
         let isEmailCorrect = email.match(validRegex)
         if(!isEmailCorrect){
             setAlert({ishow:true, status:"error", message: "email incorrect"})
-            // console.log("email incorrect");
             return
         }
         //validate username doesn't exist
@@ -32,17 +30,14 @@ const Register = ({setAlert}) => {
             let isUserExist = usersRepository.some((user) => user.username === username)
             if(isUserExist){
                 setAlert({ishow:true, status:"error", message: "username already exists"})
-                // console.log("username already exists");
                 return
             }
             let newUsersRepository = [userDetails, ...usersRepository]
             localStorage.setItem("users", JSON.stringify(newUsersRepository))
             setAlert({ishow:true, status:"success", message: "Registration succesful"})
-            // console.log(newUsersRepository);
 
         }catch(error){
             localStorage.setItem("users", JSON.stringify([userDetails]))
-    //    console.log([userDetails]);
     setAlert({ishow:true, status:"success", message: "Registration succesful"})
             // return
         }
