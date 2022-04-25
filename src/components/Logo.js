@@ -1,22 +1,13 @@
 import React from 'react'
-import headerLogo from "../../src/assets/logo.svg"
+import logo from "../assets/logo.svg"
 
-const Logo = () => {
+const Logo= () => {
 
-  // const link = [
-  //   {
-  //     buttonName: 'Reviews',
-
-  //     buttonName: 'Tips',
-
-  //     buttonName: 'Alerts',
-
-  //     buttonName: 'Blogs'
-  //   }
-  // ]
   return (
-    <img src={headerLogo} alt="react-logo" height="40px"/>
+    <div>
+         <img src={logo} alt='react-logo' height="40px"/>
+    </div>
+   
   )
 }
-
-export default Logo
+export default Logo;

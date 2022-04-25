@@ -1,23 +1,44 @@
-import React from 'react'
+import { useState } from "react";
+import Authentication from "./Authentication";
+import Budget from "./Budget";
+import Login from "./components/budget/Login";
 import MyButton from "./components/MyButton";
 import ProfileCard from "./components/ProfileCard";
+import { 
+   BrowserRouter as Router,
+   Route,
+   Switch
+   } from "react-router-dom";
 import "./MyApp.css"
-
-
 const MyApp = () => {
-    return ( 
-        <div className='myapp-container'>
-        {/* <h1>My App</h1> */}
-        {/* <MyButton  buttonName = "Tolu" color = "yellow" background = "pink"/>
-        <MyButton  buttonName= "lotachi" color = "green" background = "black"/>
-        <MyButton  buttonName = "Adeola" color = "orange" background = "purple"/> */}
-        {/* <div className="myapp-container"> */}
-        <ProfileCard  username="senior dev"  hobby="coding"/>
-        <ProfileCard  username="lota"  hobby="eating"/>
-        <ProfileCard/>
-        {/* </div> */}
-        
+    const [isSubmited, setIsSubmited] = useState(false)
 
+    // const submitForm  = ()=>{
+    //     setIsSubmited(true)
+    // }
+    return ( 
+        <div className="myapp-container">
+        {/* <Login /> */}
+        {/* {!isSubmited? <Login submitForm = {submitForm}/>: <Budget/>} */}
+          {/* <Budget/> */}
+          <Router>
+            <Switch>
+               <Route exact path="/">
+                  <Authentication/>
+               </Route>
+             
+
+               <Route path="/budget/:identity">
+                  <Budget/>
+               </Route>
+            </Switch>
+
+          </Router>
+
+         {/* { isSubmited? <Budget/>:  <Authentication setIsSubmited = {setIsSubmited}/>} */}
+            {/* <MyButton buttonName="Click me" background ="purple" color="yellow"/>
+            <MyButton buttonName = "Lotachi" background ="black" color="yellow"/>
+            <MyButton  buttonName ="UJ" background ="brown" color="yellow"/> */}
         </div>
      );
 }

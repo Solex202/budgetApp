@@ -1,61 +1,76 @@
-import React from "react";
-import { toDatetimeLocal } from "../../util";
-import './BudgetDetails.css'
+import React, { useState } from 'react'
+import { toDatetimeLocal } from '../../util';
+import './budgetDetails.css'
 
 const BudgetDetails = (props) => {
-        // let {budget, setBudget} = props
-        //   const  deleteRow = (e)=> {
-        //       let td = e.target.parentNode;
-        //       let tr = td.parentNode;
-        //       tr.parentNode.removeChild(tr)
-        // let row = btn.parentNode.parentNode;
-        // row.parentNode.removeChild(row);
-  
-    let {budget, setBudget, balance,setBalance,total,setTotal} = props
+    const [input, setInput] = useState("")
+    
+    let {budget, setBudget, balance, setBalance, total, setTotal, selectOpt} = props;
 
-    const deleteEntry = (objectId,amount) => {
+    const handleDelete =(objectId, amount)=>{
         let newObject = [...budget]
-        const newBudget = (newObject.filter((data,index) => index !== objectId))
+        const newBudget = newObject.filter((entry, index)=> index !==objectId)
         setBudget(newBudget)
-        let BudgetBalance = balance + Number(amount)
-        setBalance(BudgetBalance)
+        let budgetBal =  balance + Number(amount)
+        setBalance(budgetBal)
         setTotal(total - Number(amount))
-
     }
-    return ( 
 
-        <div className="budget-details-container">
+    const handleInputChange = (e)=>{
+        setInput(e.target.value)
+    }
+
+    const handleSearch =(input)=>{
+        
+       setBudget(
+       [ ...budget].filter((item) => input === item["budgetDescription"] || input === item["budgetName"] )
+       )
+    }
+
+    
+  return (
+    <div className='budget-details-container'>
+        <div>
             <h1>Details</h1>
-            {budget.length > 0 
-            ? 
+            <div>Search for:</div>
+            <input onChange={handleInputChange} type="text" />
+            <button onClick={()=>{handleSearch(input)}}>Search</button>
+        </div>
+        
+        <section style={{overflow : "auto", height: "30vh"}}>
+        {budget.length > 0?
+        
             <table>
-
-                <tr className="table-header">
-                    <th>Date</th>
-                    <th>Budget Name</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Delete</th>
-                </tr>
-
-                {
-                    budget.map((data, index) => 
-                    <tr key={index} className="data-row">
+            <tr className='table-header'>
+                <th>Date</th>
+                <th>Budget Name</th>
+                <th>Amount</th>
+                <th>Description</th>
+            </tr>
+               {budget.map((data, index)=>
+                   <tr key={index} className='data-row'>
                         <td>{toDatetimeLocal(data.date)}</td>
                         <td>{data.budgetName}</td>
-                        <td>{data.budgetAmount } </td>
+                        <td>{selectOpt}{data.budgetAmount}</td>
                         <td>{data.budgetDescription}</td>
-                        <td><button onClick={() =>deleteEntry(index,data.budgetAmount)}  style={{backgroundColor: 'indigo',color:'white', padding:'2px 10px', outline:'unset'}}>
-                                Delete 
-                            </button>
+                        <td className='table-delete-button'>
+                        <button 
+                        style={{backgroundColor:"red", color:"white", padding:"2px 10px", border:"unset", cursor:"pointer"}} 
+                        onClick={()=>handleDelete(index, data.budgetAmount)}>
+                            Delete
+                        </button>
                         </td>
-                    </tr>)
-                }
+                       
+                   </tr>
+                   
+               )}
             </table>
-            : "E  no gum"}
-            {/* <div>Total budget amount :</div> */}
-        </div>
-     );
+        
+        
+        :"Empty"}
+        </section>
+    </div>
+  )
 }
- 
-export default BudgetDetails;
+
+export default BudgetDetails

@@ -4,50 +4,62 @@ import './converter.css'
 
 function Converter(props) {
 
-const [exchangeRate, setExchangeRate] = useState([])
-    const {balance, setBalance} = props
-    const [option, setOption] = useState("")
-    const [rate, setRate] = useState({})
+  const [input,setIsInput] = useState("")
+    const[exchangerate, setExchangeRate] = useState({})
+    const[selectOption, setSelectOption] = useState("")
 
-    const handleOptionChange = (e) =>{
-        setOption(e.target.value)
+    let {budget, setSelectOpt} = props
+
+
+
+const handleInput = (e) => {
+    // console.log(e)
+    setIsInput(e.target.value)
+}
+const handleSelect = (e)=>{
+
+    selectOption===""?
+    props.setBalance(props.balance * exchangerate[e.target.valueof]) :
+    props.setBalance(props.balance / exchangerate[selectOption] * exchangerate[e.target.value])
+    
+
+    for(let i=0; i< budget.length; i++) {
+        budget[i]["budgetAmount"]= budget[i]["budgetAmount"]/exchangerate[selectOption]* exchangerate[e.target.value]
     }
-
+    setSelectOption(e.target.value)
+    setSelectOpt(e.target.value)
+}
     useEffect(() => {
         axios.get('https://v6.exchangerate-api.com/v6/9177ccc3a4d4e7d11c3c3feb/latest/NGN')
         .then((response) => {
-            // console.log(response);
             console.log(response.data.conversion_rates);
-            // let keys = Object.keys(response.data.conversion_rates)
                  setExchangeRate(Object.keys(response.data.conversion_rates))
-                 setRate(response.data.conversion_rates)
-                 setBalance(balance)
+                 setExchangeRate(response.data.conversion_rates)
+                 setSelectOption(Object.keys(response.data.conversion_rates)[0])
+                //  setBalance(balance)
         })
     }, [])
 
-    // useEffect(() => {
-    //     fetch('https://v6.exchangerate-api.com/v6/9177ccc3a4d4e7d11c3c3feb/latest/NGN')
-    //         .then((data) => data.json())
-    //         .then((data) => {
-    //            let keys = Object.keys(data.conversion_rates)
-    //             setExchangeRate(Object.keys(data.conversion_rates))
-    //             setRate(data.conversion_rates)
-    //             setBalance(balance)
-    //         }
-    //     )}, [])
+    // useEffect(()=>{
+    //     axios.get('https://v6.exchangerate-api.com/v6/8f58fa831aa1c2654d0d26a0/latest/NGN')
+    //     .then((response)=> 
+    //     {setExchangeRate(response.data.conversion_rates)
+    //     setSelectOption(Object.keys(response.data.conversion_rates)[0])
+    //     })
+    // },[])
 
-        useEffect (() => {
-            setBalance(balance * rate[option])
-        },[option])
+        // for(let i = 0; i < budget.length; i++){
+        //     budget[i]["budgetAmount"] = budget[i]["budgetAmount"] / 
+        // }
         
 return (
     <div>
-        <select className='dropdown' onChange={handleOptionChange}>
-           {exchangeRate.map((val, index)=> 
-               <option key={index}>{val}</option>
-           )}
-        </select>
-    </div>
+    <select className='dropdown' onChange={handleSelect}> 
+    {Object.keys(exchangerate).map((value, index)=>           
+        <option key={index}>{value}</option>
+    )}
+    </select>
+</div>
   )
 }
 

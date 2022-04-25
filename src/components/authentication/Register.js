@@ -1,60 +1,71 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const Register = ({setAlert}) => {
+    const [userDetails, setUserDetails] = useState({username:"", email:"", password:""})
 
-    const [userDetails, setuserDetails] = useState({username:"", email:"", password:""})
-
-    const handleUserInput = (e) => {
-        setuserDetails({...userDetails, [e.target.name] : e.target.value})
+    const handleUserInput = (e)=>{
+        setUserDetails({ ...userDetails, [e.target.name] : e.target.value })
     }
 
-    const handleRegistration = (e) =>{
-        let{username,email} = userDetails
+    const handleRegistration = ()=>{
+        let {username, email} = userDetails
         //check if all fields have values
-        let isFieldIncomplete =  Object.keys(userDetails).some((detail) => detail === " ")
-        if(isFieldIncomplete){
-            setAlert({ishow:true, status:"error", message: "field incomplete"})``
-            return
+        let isFieldsIncomplete = Object.keys(userDetails).some((detail) => detail === " ")
+        if(isFieldsIncomplete){
+            setAlert({ishow:true, status:"error", message:"field incomplete"})
+            console.log("field incomplete");
+            return;
         }
-        //validate email is email
+        //validate email
         let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         let isEmailCorrect = email.match(validRegex)
         if(!isEmailCorrect){
-            setAlert({ishow:true, status:"error", message: "email incorrect"})
-            return
+            setAlert({ishow: true, status:"error", message:"Email incorrect"})
+            // console.log("Email incorrect");
+            return;
         }
-        //validate username doesn't exist
-        let usersRepository
-        try{
-            usersRepository = JSON.parse(localStorage.getItem("users"))
-            let isUserExist = usersRepository.some((user) => user.username === username)
+        
+        //validate username is a string
+
+       
+        try {
+            let userRepository 
+            userRepository = JSON.parse(localStorage.getItem("users"))
+            let isUserExist = userRepository.some((user)=> user.username === username)
             if(isUserExist){
-                setAlert({ishow:true, status:"error", message: "username already exists"})
+                setAlert({ishow: true, status:"error", message:"Username Already Exists"})
+                // console.log("Username Already Exists");
                 return
             }
-            let newUsersRepository = [userDetails, ...usersRepository]
-            localStorage.setItem("users", JSON.stringify(newUsersRepository))
-            setAlert({ishow:true, status:"success", message: "Registration succesful"})
 
-        }catch(error){
+            let newUsersRepository = [userDetails, ...userRepository]
+            localStorage.setItem("users", JSON.stringify(newUsersRepository))
+            // console.log(localStorage.getItem("users"));
+            setAlert({ishow: true, status:"success", message:"Registration successful"})
+            
+
+        } catch (error) {
             localStorage.setItem("users", JSON.stringify([userDetails]))
-    setAlert({ishow:true, status:"success", message: "Registration succesful"})
-            // return
+            setAlert({ishow: true, status:"success", message:"Registration success"})
+            console.log([userDetails]);
         }
-       
+        
+        
     }
   return (
+      
     <div className='auth-register'>
-        <label>Username</label>
-        <input name='username' onChange={handleUserInput}/>
-        <br/>
-        <label>Email</label>
-        <input name='email' onChange={handleUserInput}/>
-        <br/>
-        <label>Password</label>
-        <input name='password' onChange={handleUserInput}/>
-        <br/>
-        <button onClick={handleRegistration}>Register</button>
+        
+        <label>Username: </label>
+        <input type="text" name='username' onChange={handleUserInput} />
+        <br />
+        <label>Email: </label>
+        <input type="text" name='email'  onChange={handleUserInput} />
+        <br />
+        <label>Password: </label>
+        <input type="password" name='password'  onChange={handleUserInput} />
+        <br />
+        <button onClick = {handleRegistration}>Register</button>
     </div>
   )
 }

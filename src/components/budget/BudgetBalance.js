@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from "react";
-import "./BudgetBalance.css"
-import Converter from "./Converter";
-
+import { useState } from "react";
+import "./budgetBalance.css"
+import Exchange from './Exchange'
+import { useHistory } from "react-router-dom";
 
 const BudgetBalance = (props) => {
-
     const [input, setInput] = useState("");
-    const handleInput = (e) => {
-        // console.log(e);
-        setInput(e.target.value)
-}
+    const history = useHistory();
+    let {budget, setSelectOpt} = props;
+    const handleChange= (e)=>{
+        e.preventDefault();
+        let value = e.target.value
+        setInput(value)
+    }
 
-
-
-
- // https://v6.exchangerate-api.com/v6/9177ccc3a4d4e7d11c3c3feb/latest/USD
-
-// useEffect(() => {
-//     console.log("i just mounted @ budget balance");
-// return () => {
-//     console.log("i just unmounted");
-// }
-// }, [props.balance])
+    const updateBalance = (input) => {
+        input = Number(input)
+        typeof(input) === "number" ? 
+        props.setBalance(input) : 
+        props.setBalance("Invalid input");
+        // props.setBalance(input)
+        setInput("")
+    }
+    const logOut = ()=>{
+        history.push("/")
+    }
 
     return ( 
-
         <div className="budgetBalance">
             <div className="balance">
                 {props.balance}
             </div>
             <div className="balance-button">
-                <input  onChange={handleInput} />
-                <Converter balance = {props.balance} setBalance = {props.setBalance}/>
-                <button  onClick={() => props.setBalance(input)}>Update balance</button>
+                <input value={input}  type="text" onChange={handleChange}  />
+                <Exchange setSelectOpt = {setSelectOpt} budget= {budget} balance = {props.balance} setBalance = {props.setBalance} val = {props.val}/>
+                <button  onClick={()=>updateBalance(input)}>Update balance</button>
+                <button  onClick={logOut}>Logout</button>
             </div>
-            <div>
-                {/* <h1>Welcome to your personal budget</h1> */}
-            </div>
+            
         </div>
-    );
+     );
 }
  
 export default BudgetBalance;

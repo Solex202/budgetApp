@@ -1,56 +1,48 @@
-import Logo from "./components/Logo";
+// import { AuthButton } from "./components/AuthButton";
+// import Logo from "./components/Logo";
 import "./App.css"
-import Links from "./components/Links";
-import AuthButton from "./components/AuthButton";
-import Features from "./components/Features";
-import FloatBox from "./components/FloatBox";
-import ToggleButton from "./components/ToggleButton";
+import Budget from "./Budget";
+import Login from "./components/budget/Login";
+
 
 
 function App() {
-
-  const links = [
-    {
-      buttonName: 'Reviews',
-    },
-    { buttonName: 'Tips',
-    },
-    {  buttonName: 'Alerts',
-    },
-    {  buttonName: 'Blogs'
-    }
-  ]
+  // const links = [
+  //   {
+  //     buttonName: "Reviews",
+  //   },
+  //   {
+  //     buttonName: "Tips",
+  //   },
+  //   {
+  //     buttonName: "Alerts",
+  //   },
+  //   {
+  //     buttonName: "Blogs",
+  //   },
+  // ]
   return (
-    <div className="hotel-app-container">
-      <div className="header-container">
-        <div className="header"> 
-          <Logo/>
-          <div style={{display: 'flex', justifyContent: 'space-between', width: '20%', color: 'white'}}>
-            {links.map((link) => <p>{link.buttonName}</p>)}
-          </div>
-          <AuthButton/>
+    <div className="app-container">
+      {/* <div className="header-container">
+        <div className="header">
+                <Logo/>
+                <div style={{display:"flex", 
+                justifyContent:"space-between", 
+                width:"40%", color:"white"}}>
+                    {links.map(link=>
+                      <p className="">{link.buttonName}</p>
+                    )}
+                </div>
+                <AuthButton/>
         </div>
-        <div className="header-text">
-          <h1>Discover a Beautiful <br/> Place With Us</h1>
-          <p>Would you explore nature paradise in the world ,let's find the <br/> best destination in the world with us</p>
+        <div className="main-text-holder">
+            <h1>Discover a beautiful <br/> place with us</h1>
+            <p>Would you enjoy nature paradise in the world, let's find the <br/>best destination in the world with us</p>
         </div>
-      </div>
-      <div className="toggle-search">
-        <ToggleButton  image=""  btnText="Flight"/>
-        <ToggleButton  image=""  btnText="Hotel"/>
-      </div>
-      <div className="box">
-        <FloatBox/>
-      </div>
-      <div className="special-container">
-        <div className="container-text">
-          <p>SPECIAL FEATURE</p>
-          <h2>See Some Benefits Joining Us</h2>
-        </div>
-        <div>
-        <Features />
-        </div>
-      </div>
+     </div> */}
+
+     <Login/>
+     <Budget/>
     </div>
   );
 }

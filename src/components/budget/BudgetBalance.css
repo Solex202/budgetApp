@@ -1,64 +1,68 @@
 .budgetBalance{
-    background-color:  indigo;
+    background-color: blueviolet;
     height: 5%;
     width: 97%;
     padding: 2% 1.5%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     display: flex;
     align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     justify-content: space-between;
 }
 
 .balance{
-    background-color: floralwhite;
-    height: 5vh;
-    color: indigo;
-    border-radius: 5px;
-    /* padding: 1%; */
-    width: 19%;
+    background-color: rgb(116, 8, 218);
+    color: white;
+    border-radius: 3px;
+    height: 7vh;
+    width: 25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* rgb(116, 8, 218); */
 }
-
 .balance-button{
-    width: 65%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
 }
 
 .balance-button input{
     height: 5vh;
     width: 50%;
     border-radius: 4px;
-    border: unset;
-    background-color: floralwhite;
-    box-shadow: 24px;
-    padding: 0 10px;
+    outline: none;
+    border: none;
 }
 
-.balance-button input :focus-visible{
+.balance-button input:focus-visible{
     outline: unset;
     background-color: white;
     color: #4b0090;
 }
-
 .balance-button button{
-    outline: unset;
-    height: 5.5vh;
-    background-color: yellow;
-    color: indigo;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
+    margin: 0 5px;
+    border-radius: 3px;
     border: none;
-    padding: 1.5%;
+    padding: 1.8%;
+    height: 5vh;
     cursor: pointer;
+    outline: unset;
+    background-color: #ffcf03;
+    color: blueviolet;
+    font-size: 12px;
+    font-weight: bold;
+}
 
+.dropdown{
+    height: 2.5rem;
+    width: 4rem;
+    border: unset;
+    border-radius: 3px;
+    padding: 4px;
+    color: #4b0090;
+    font-weight: bold;
 }

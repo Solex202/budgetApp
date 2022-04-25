@@ -8,18 +8,7 @@ import { Route } from "react-router-dom";
 
 function NewApp(){
 
-    // const[isSubmited, setIsSubmited] = useState(false)
-
-
-    // const submitForm = () =>{
-    //     setIsSubmited(true)
-    // }
-
-    // function submitForm(){
-    //     setIsSubmited(true)
-    // }
-
-    return(
+ return(
 
         <div className="app-container">
             <Router>
@@ -28,12 +17,11 @@ function NewApp(){
                         <Authentication/>
                     </Route>
 
-                    <Route path="/dashboard/:userName">
+                    <Route path="/dashboard/:identity">
                         <Budget/>
                     </Route>
                 </switch>
             </Router>
-            {/* <Budget/> */}
 
         </div>
 

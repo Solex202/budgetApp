@@ -1,49 +1,30 @@
-.budget-details-container table{
-    /* min-height: 50vh; */
-}
-
-table{
-    border: 2px solid black;
-    border-spacing: 0.5rem;
-    border-collapse: collapse;
-    width: 100%;
-    /* max-height: 70%; */
-
-}
-
-td,th{
-    border: 1px solid black;
-    padding: 0.5rem;
-    text-align: left;
-    width: 8rem;
-    height: 4rem;
-}
-
 .budget-details-container h1{
     text-align: center;
-    margin-top: 39px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    color: #4b0090;
+}
+/* .budget-details-container{
+    max-height: 30vh;
+} */
+
+.budget-details-container table{
+    border: 2px solid #353131;
+    border-radius: 3px;
+    width: 100%;
+    margin: 0 20px;
+    max-height: 20vh;
+    min-height: 20vh;
 }
 
-.budget-details-container{
-    color: indigo;
-    /* width: 90px; */
-    /* height: 60px; */
-    /* background-color: wheat; */
-
-}
-
-th{
-    background-color: yellow;
-    color: indigo;
-}
-
-td{
-    color: indigo;
+.table-header{
+    background-color: #4b0090;
+    color: white;
+    height: 5vh;
+    text-align: center;
 }
 
 .data-row{
     text-align: center;
     height: 1vh;
-    background-color: white;
+    background-color: rgb(219, 219, 219);
 }

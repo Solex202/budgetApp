@@ -1,12 +1,9 @@
 .budget-body{
     padding: 2%;
 }
-
-
 .text-intro{
     width: 35%;
 }
-
 .text-intro h1{
     color: #4b0090;
     margin-bottom: 0;
@@ -16,15 +13,30 @@
 
 .text-intro p{
     color: #808080;
-    margin:  12px 0;
-    font-size: 14px;
+    margin-bottom:12px 0;
+    font-size: 12px;
+}
+
+.budget-body-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.budget-body-container button{
+    background-color: #4b0090;
+    margin-bottom: 18px;
+    color: white;
+    border: unset;
+    outline: unset;
+    padding: 0.8em 5em;
+    height: fit-content;
 }
 
 .budgetEntry{
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 20%;
 }
-
 .budgetEntry p{
     margin: 2px;
     font-size: 12px;
@@ -34,35 +46,18 @@
 .budgetEntry input{
     height: 2rem;
     width: 90%;
-    padding: 2px;
+    background-color: #dadada;
+    border-radius: 3px;
     outline: unset;
     color: #4b0090;
-     border: unset;
-     background-color: #dadada;
+    border: unset;
 }
 
 .budget-body-sectioned{
     width: 90%;
 }
 
-.budget-entry-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.budget-entry-container button{
-    background-color: #4b0090;
-    color: white;
-    border: unset;
-    outline: unset;
-    padding: 0.8em 5em;
-    height: fit-content;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.budget-details-container h1{
+.budget-details-container{
     color: #4b0090;
     font-size: 16px;
 }

@@ -1,11 +1,8 @@
 import React from 'react'
 
-const AuthButton = () => {
-    return(
-    <button className='nav-btn'>
-        Sign In
-    </button>
-    )
+export const AuthButton = () => {
+  return (
+    <button className='nav-btn'>Sign In</button>
+  )
 }
-
-export default AuthButton
+export default AuthButton;
