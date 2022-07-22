@@ -25,8 +25,8 @@ const BudgetBody = (props) => {
     <div className='budget-body'>
     {/* {setTime()} */}
         <div className='text-intro'>
-            <h1>{greeting} {identity.charAt(0).toUpperCase() + identity.slice(1)}, Welcome to your Personal Budget </h1>
-            <p>Enter the price, description and give a special name to your expenditure</p>
+            <h1>{greeting} {identity.charAt(0).toUpperCase() + identity.slice(1)}, <br/> Welcome to your Personal Budget </h1>
+            <h3>Enter the price, description and give a special name to your expenditure</h3>
         </div>
         <div className='budget-body-sectioned'>
             <BudgetEntry budget={budget} setBudget ={setBudget} balance={balance} setBalance ={setBalance} total={total} setTotal={setTotal} />

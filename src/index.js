@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import MyApp from './MyApp';
+import NewApp from './NewApp';
 
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     <MyApp/>
+    {/* <NewApp/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

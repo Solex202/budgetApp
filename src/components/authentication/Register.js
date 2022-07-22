@@ -21,26 +21,20 @@ const Register = ({setAlert}) => {
         let isEmailCorrect = email.match(validRegex)
         if(!isEmailCorrect){
             setAlert({ishow: true, status:"error", message:"Email incorrect"})
-            // console.log("Email incorrect");
             return;
         }
         
-        //validate username is a string
-
-       
         try {
             let userRepository 
             userRepository = JSON.parse(localStorage.getItem("users"))
             let isUserExist = userRepository.some((user)=> user.username === username)
             if(isUserExist){
                 setAlert({ishow: true, status:"error", message:"Username Already Exists"})
-                // console.log("Username Already Exists");
                 return
             }
 
             let newUsersRepository = [userDetails, ...userRepository]
             localStorage.setItem("users", JSON.stringify(newUsersRepository))
-            // console.log(localStorage.getItem("users"));
             setAlert({ishow: true, status:"success", message:"Registration successful"})
             
 

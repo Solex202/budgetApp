@@ -10,36 +10,33 @@ import {
    Switch
    } from "react-router-dom";
 import "./MyApp.css"
+import { Provider } from "react-redux";
+import store from "./redux/store";
 const MyApp = () => {
     const [isSubmited, setIsSubmited] = useState(false)
 
-    // const submitForm  = ()=>{
-    //     setIsSubmited(true)
-    // }
+
     return ( 
-        <div className="myapp-container">
-        {/* <Login /> */}
-        {/* {!isSubmited? <Login submitForm = {submitForm}/>: <Budget/>} */}
-          {/* <Budget/> */}
-          <Router>
-            <Switch>
-               <Route exact path="/">
-                  <Authentication/>
-               </Route>
-             
+        <Provider store ={store}>
+           <div className="myapp-container">
+       
+            <Router>
+               <Switch>
+                  <Route exact path="/">
+                     <Authentication/>
+                  </Route>
+               
 
-               <Route path="/budget/:identity">
-                  <Budget/>
-               </Route>
-            </Switch>
+                  <Route path="/budget/:identity">
+                     <Budget/>
+                  </Route>
+               </Switch>
 
-          </Router>
+            </Router>
 
-         {/* { isSubmited? <Budget/>:  <Authentication setIsSubmited = {setIsSubmited}/>} */}
-            {/* <MyButton buttonName="Click me" background ="purple" color="yellow"/>
-            <MyButton buttonName = "Lotachi" background ="black" color="yellow"/>
-            <MyButton  buttonName ="UJ" background ="brown" color="yellow"/> */}
-        </div>
+     
+      </div>
+        </Provider>
      );
 }
  

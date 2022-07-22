@@ -7,14 +7,15 @@
 .text-intro h1{
     color: #4b0090;
     margin-bottom: 0;
-    font-size: 25px;
+    font-size: 33px;
     line-height: 28px;
 }
 
-.text-intro p{
+.text-intro h3{
     color: #808080;
     margin-bottom:12px 0;
-    font-size: 12px;
+    font-size: 22px;
+    margin-top: 6%;
 }
 
 .budget-body-container{

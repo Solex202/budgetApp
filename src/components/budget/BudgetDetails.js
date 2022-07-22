@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import { toDatetimeLocal } from '../../util';
 import './budgetDetails.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteBudgetAction } from '../../redux/actions/budget';
 
 const BudgetDetails = (props) => {
     const [input, setInput] = useState("")
     
     let {budget, setBudget, balance, setBalance, total, setTotal, selectOpt} = props;
 
+    const  {budgetState} = useSelector((state)=> state.budgetReducer)
+    const dispatch = useDispatch()
+
     const handleDelete =(objectId, amount)=>{
-        let newObject = [...budget]
-        const newBudget = newObject.filter((entry, index)=> index !==objectId)
-        setBudget(newBudget)
-        let budgetBal =  balance + Number(amount)
-        setBalance(budgetBal)
-        setTotal(total - Number(amount))
+        // let newObject = [...budget]
+        // const newBudget = newObject.filter((entry, index)=> index !==objectId)
+        // setBudget(newBudget)
+        // let budgetBal =  balance + Number(amount)
+        // setBalance(budgetBal)
+        // setTotal(total - Number(amount))
+        dispatch(deleteBudgetAction({id:objectId, amount}))
     }
 
     const handleInputChange = (e)=>{
@@ -21,14 +27,12 @@ const BudgetDetails = (props) => {
     }
 
     const handleSearch =(input)=>{
-        
-       setBudget(
-       [ ...budget].filter((item) => input === item["budgetDescription"] || input === item["budgetName"] )
+        setBudget(
+       [ ...budget].filter((item) => input === item["budgetDescription"] || input === item["budgetName"])
        )
     }
 
-    
-  return (
+    return (
     <div className='budget-details-container'>
         <div>
             <h1>Details</h1>
@@ -38,7 +42,7 @@ const BudgetDetails = (props) => {
         </div>
         
         <section style={{overflow : "auto", height: "30vh"}}>
-        {budget.length > 0?
+        {budgetState.length > 0?
         
             <table>
             <tr className='table-header'>
@@ -47,7 +51,7 @@ const BudgetDetails = (props) => {
                 <th>Amount</th>
                 <th>Description</th>
             </tr>
-               {budget.map((data, index)=>
+               {budgetState.map((data, index)=>
                    <tr key={index} className='data-row'>
                         <td>{toDatetimeLocal(data.date)}</td>
                         <td>{data.budgetName}</td>
@@ -60,10 +64,8 @@ const BudgetDetails = (props) => {
                             Delete
                         </button>
                         </td>
-                       
-                   </tr>
-                   
-               )}
+                    </tr>
+                )}
             </table>
         
         

@@ -2,9 +2,13 @@ import { useState } from "react";
 import "./budgetBalance.css"
 import Exchange from './Exchange'
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const BudgetBalance = (props) => {
     const [input, setInput] = useState("");
+
+    const {budgetAmount} = useSelector(state => state.budgetReducer)
     const history = useHistory();
     let {budget, setSelectOpt} = props;
     const handleChange= (e)=>{
@@ -18,7 +22,6 @@ const BudgetBalance = (props) => {
         typeof(input) === "number" ? 
         props.setBalance(input) : 
         props.setBalance("Invalid input");
-        // props.setBalance(input)
         setInput("")
     }
     const logOut = ()=>{
@@ -28,7 +31,8 @@ const BudgetBalance = (props) => {
     return ( 
         <div className="budgetBalance">
             <div className="balance">
-                {props.balance}
+                {/* {props.balance} */}
+                {budgetAmount}
             </div>
             <div className="balance-button">
                 <input value={input}  type="text" onChange={handleChange}  />

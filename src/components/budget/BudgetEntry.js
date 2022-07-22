@@ -1,9 +1,13 @@
 import React, { useState , useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import { addItemToBudget } from '../../redux/actions/budget';
 
 
 const BudgetEntry = (props) => {
     let {budget, setBudget, balance, setBalance, total, setTotal} = props;
 
+
+    const dispatch = useDispatch()
     
     const [input, setInput] = useState({budgetName:"", budgetAmount:"", budgetDescription:""});
     const handleInput = (e) => {
@@ -14,7 +18,10 @@ const BudgetEntry = (props) => {
 
     const createBudget =()=>{
         let budgetData = [ ...budget, {...input, date:Date.now()}]
-        balance > 0? setBudget(budgetData) : setBudget({})
+        //redux
+        let budgetStoredData = {...input, date:Date.now()}
+        balance > 0? setBudget(budgetStoredData) : setBudget({})
+         dispatch(addItemToBudget(budgetStoredData))
         let budgetTotal = Number(input.budgetAmount)
 
         balance > 0? setTotal(total += budgetTotal) : setTotal(0)

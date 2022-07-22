@@ -5,12 +5,15 @@ import BudgetLoginPage from "./components/budget/BudgetLoginPage";
 import "./NewApp.css"
 import {BrowserRouter as Router} from "react-router-dom"
 import { Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function NewApp(){
 
  return(
 
-        <div className="app-container">
+       <Provider store={store}>
+            <div className="app-container">
             <Router>
                 <switch>
                     <Route exact path="/">
@@ -24,11 +27,8 @@ function NewApp(){
             </Router>
 
         </div>
+       </Provider>
 
-        // <div className="app-container">
-        //     {isSubmited ? <Budget/>: <Authentication  setIsSubmited = {setIsSubmited}/>}
-        //  {/* <Budget/> */}
-        // </div>
     );
 }
 

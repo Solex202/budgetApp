@@ -11,7 +11,6 @@ const Exchange = (props) => {
 
 
     const handleInput = (e) => {
-        // console.log(e)
         setIsInput(e.target.value)
     }
     const handleSelect = (e)=>{

@@ -9,14 +9,12 @@ const Budget = ({userName}) => {
     const [budget, setBudget] = useState([])
     const [selectOpt, setSelectOpt] = useState("NGN")
 
-
-    return ( 
-       
-        <div className="budget-container">
+return ( 
+    <div className="budget-container">
             <BudgetBalance setBudget = {setBudget} setSelectOpt = {setSelectOpt} budget = {budget} balance = {balance} setBalance ={setBalance} val = {val}/>
             <BudgetBody setBudget = {setBudget} selectOpt = {selectOpt} budget = {budget} balance={balance} setBalance={setBalance} userName = {userName}/>
         </div>
-     );
+    );
 }
  
 export default Budget;

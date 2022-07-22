@@ -7,7 +7,6 @@ const LoginB = ({setAlert}) => {
     let history  = useHistory()
 
     const [userDetails, setUserDetails] = useState({identity:"", password: ""})
-    // const [user, setUser] = useState({})
 
     const handleUserInput = (e) =>{
         setUserDetails({...userDetails, [e.target.name]:e.target.value})
@@ -29,7 +28,6 @@ const LoginB = ({setAlert}) => {
         let {identity} = userDetails;
         isValid ?
         history.push(`/budget/${user.username}/?id=${userDetails.identity}`):
-        // setAlert({ishow: true, status : "success", message: "login successful"}):
         setAlert({ishow: true, status : "error", message: "user details incorrect"})
         setTimeout(
             () => setAlert({ishow: false, status : "", message: ""})
